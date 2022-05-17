@@ -31,4 +31,11 @@ view: project_cost_perday {
     type: count
     drill_fields: [name]
   }
+  measure: total_cost {
+    type: sum
+    sql:${cost};;
+    #value_format_name:decimal_2
+    html: @{big_money_format} ;;
+    drill_fields: [name,date_raw,cost]
+  }
 }

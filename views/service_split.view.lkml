@@ -26,4 +26,10 @@ view: service_split {
     type: count
     drill_fields: [name]
   }
+
+  measure: total_cost {
+    type: sum
+    sql: ${cost} ;;
+    html: @{big_money_format} ;;
+  }
 }

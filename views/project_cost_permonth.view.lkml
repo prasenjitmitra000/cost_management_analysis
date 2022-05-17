@@ -26,4 +26,15 @@ view: project_cost_permonth {
     type: count
     drill_fields: [name]
   }
+
+  measure: distinct_project_count {
+    type: count_distinct
+    sql: ${name} ;;
+  }
+
+  measure: total_cost {
+    type: sum
+    sql: ${cost} ;;
+    html: @{big_money_format} ;;
+  }
 }

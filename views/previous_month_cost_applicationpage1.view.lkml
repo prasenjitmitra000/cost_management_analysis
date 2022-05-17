@@ -1,0 +1,49 @@
+view: previous_month_cost_applicationpage1 {
+  sql_table_name: `cost_management.Previous_Month_Cost_Application-Page-1`
+    ;;
+
+  dimension: cost {
+    type: number
+    sql: ${TABLE}.cost ;;
+  }
+
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+
+  dimension: month_name {
+    type: string
+    sql: ${TABLE}.month_name ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: ${TABLE}.name ;;
+  }
+
+  dimension: value {
+    type: string
+    sql: ${TABLE}.value ;;
+  }
+
+  dimension: year {
+    type: number
+    sql: ${TABLE}.year ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [month_name, name]
+  }
+}

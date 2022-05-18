@@ -279,6 +279,12 @@ view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
     type: count
     drill_fields: [project__name]
   }
+  measure: total_cost {
+    type: sum
+    sql: round(${cost}*${currency_conversion_rate},2)  ;;
+    html: @{big_money_format} ;;
+    drill_fields: [service__description,project__name,invoice__month,total_cost]
+  }
 }
 
 view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4__labels {

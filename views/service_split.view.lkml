@@ -4,7 +4,8 @@ view: service_split {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.cost ;;
+    sql: round(${TABLE}.cost,2) ;;
+    html: @{big_money_format} ;;
   }
 
   dimension: description {
@@ -29,7 +30,8 @@ view: service_split {
 
   measure: total_cost {
     type: sum
-    sql: ${cost} ;;
+    sql: round(${cost},2) ;;
     html: @{big_money_format} ;;
+    drill_fields: [name,description,month,cost]
   }
 }

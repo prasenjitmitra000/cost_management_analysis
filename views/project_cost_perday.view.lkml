@@ -4,7 +4,8 @@ view: project_cost_perday {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.cost ;;
+    sql: round(${TABLE}.cost,2) ;;
+    html: @{big_money_format} ;;
   }
 
   dimension_group: date {
@@ -33,7 +34,7 @@ view: project_cost_perday {
   }
   measure: total_cost {
     type: sum
-    sql:${cost};;
+    sql:round(${cost},2);;
     #value_format_name:decimal_2
     html: @{big_money_format} ;;
     drill_fields: [name,date_raw,cost]

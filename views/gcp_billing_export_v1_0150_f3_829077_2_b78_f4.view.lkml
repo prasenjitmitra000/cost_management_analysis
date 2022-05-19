@@ -1,4 +1,5 @@
 view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
+  label: ""
   sql_table_name: `cost_management.gcp_billing_export_v1_0150F3_829077_2B78F4`
     ;;
 
@@ -277,8 +278,10 @@ view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
   }
 
   measure: count {
+    label: "Count"
     type: count
     drill_fields: [project__name]
+    html: @{big_number_format} ;;
   }
   measure: total_cost {
     type: sum

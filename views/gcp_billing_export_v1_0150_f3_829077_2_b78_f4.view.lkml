@@ -106,7 +106,8 @@ view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
 
   dimension: invoice__month {
     type: string
-    sql: ${TABLE}.invoice.month ;;
+    #sql: ${TABLE}.invoice.month ;;
+    sql: FORMAT_DATE('%y-%m', PARSE_DATE('%Y%m', ${TABLE}.invoice.month)) ;;
     group_label: "Invoice"
     group_item_label: "Month"
   }
@@ -118,9 +119,9 @@ view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
 
   dimension: location__country {
     type: string
+    map_layer_name: countries
     sql: ${TABLE}.location.country ;;
-    group_label: "Location"
-    group_item_label: "Country"
+
   }
 
   dimension: location__location {

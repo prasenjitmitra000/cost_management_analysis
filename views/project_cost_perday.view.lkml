@@ -8,8 +8,8 @@ view: project_cost_perday {
     html: @{big_money_format} ;;
   }
   dimension: year{
-    type: string
-    sql: FORMAT_DATE('%Y', PARSE_DATE('%B %d, %Y', ${TABLE}.date)) ;;
+    type: number
+    sql: EXTRACT(year from ${TABLE}.date) ;;
   }
 
   dimension_group: date {

@@ -113,6 +113,14 @@ view: gcp_billing_export_v1_0150_f3_829077_2_b78_f4 {
     group_item_label: "Month"
   }
 
+  dimension: year {
+    type: string
+    #sql: ${TABLE}.invoice.month ;;
+    sql: FORMAT_DATE('%Y', PARSE_DATE('%Y%m', ${TABLE}.invoice.month)) ;;
+    group_label: "Invoice"
+    group_item_label: "Year"
+  }
+
   dimension: labels {
     hidden: yes
     sql: ${TABLE}.labels ;;
